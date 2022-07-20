@@ -4,6 +4,7 @@ const consumer = new Kafka.SimpleConsumer({"connectionString":"127.0.0.1:9092"})
 let data = function (messageSet) {
     messageSet.forEach(function (m) {
         let value = m.message.value.toString('utf8');
+        console.log(value);
         parseMessage(value);
     });
 };
