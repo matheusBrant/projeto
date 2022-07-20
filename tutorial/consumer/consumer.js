@@ -50,20 +50,23 @@ function parseMessage(message) {
     let direcitonNumber = parseFloat(hexToDec(direction)/100);
 
     if(direcitonNumber > 359.99 || direcitonNumber < 0){
-        console.log('Incorrect value' + ' → direction');
+        fullData.table.push({direcitonNumber: 'Incorrect value'});
     }else{
-        console.log(direcitonNumber + ' → direction');
+        fullData.table.push({direcitonNumber: direcitonNumber});
     }
-    console.log(hexToDec(distance)/1000 + ' km' + ' → distance');
-    console.log(hexToDec(reportTime)/60 + ' hrs' + ' → reportTime');
-    console.log(hexToDec(speed)+ ' km/h' +' → speed');
-    console.log(hexToBin(combo).substring(0,5) + ' → combo');
+    fullData.table.push({distance: hexToDec(distance)/1000});
+    fullData.table.push({reportTime: hexToDec(reportTime)/60});
+    fullData.table.push({speed: hexToDec(speed)});
+    fullData.table.push({comboData: hexToBin(combo)});
+
     let control = hexToBin(combo).substring(0,5).split('');
-    console.log(control[0] + ' → GPS Fixado');
-    console.log(control[1] + ' → GPS Histórico');
-    console.log(control[2] + ' → Ignição Ligada');
-    console.log(control[3] + ' → Latitude negativa');
-    console.log(control[4] + ' → Longitude negativa');
+
+    fullData.table.push({fixedGps: control[0]});
+    fullData.table.push({historyGps: control[1]});
+    fullData.table.push({ignition: control[2]});
+    fullData.table.push({negLat: control[3]});
+    fullData.table.push({negLong: control[4]});
+ 
 
     let latitude = hexToDec(lat)/1000000;
     let longitude = hexToDec(long)/1000000;
@@ -74,17 +77,17 @@ function parseMessage(message) {
     longitude = parseFloat(longitude);
 
     if(latitude > 90.000000 || latitude < -90.000000){
-        console.log('Incorrect value' + ' → lat');
+        fullData.table.push({latitude: 'Incorrect value'});
     }else{
-        console.log(latitude + ' → lat');
+        fullData.table.push({latitude: latitude});
     }
 
     if(longitude > 180.000000 || longitude < -180.000000){
-        console.log('Incorrect value' + ' → long');
+        fullData.table.push({longitude: 'Incorrect value'});
     }else{
-        console.log(longitude + ' → long');
+        fullData.table.push({longitude: longitude});
     }
-    console.log(data + ' → Full data');
+    fullData.table.push({dataComplete: data});
 
     var fs = require('fs');
     var filePath = 'data.json'; 

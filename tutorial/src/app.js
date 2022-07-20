@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 //Rotas
 const index = require('./routes/index');
-const personRoute = require('./routes/personRoute');
+const dataRoute = require('./routes/dataRoute');
 app.use('/', index);
-app.use('/persons', personRoute);
+app.use('/data', dataRoute);
 module.exports = app;
