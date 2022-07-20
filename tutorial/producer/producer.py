@@ -11,4 +11,4 @@ while True:
     heartbeat = '50F70A3F730150494E4773C4'
     location = '50F70A3F73025EFCF950156F017D784000008CA0F8003C013026A1029E72BD73C4'
     producer.send('users', location)
-    sleep(10) #tempo padrao de comunicação
+    sleep(120) #tempo padrao de comunicação

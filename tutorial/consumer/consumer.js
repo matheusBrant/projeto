@@ -67,7 +67,6 @@ function parseMessage(message) {
     fullData.table.push({negLat: control[3]});
     fullData.table.push({negLong: control[4]});
  
-
     let latitude = hexToDec(lat)/1000000;
     let longitude = hexToDec(long)/1000000;
     control[3] == '1' ? latitude = '-'+latitude: latitude;
