@@ -20,3 +20,4 @@
 ###### → Terminal 1: ***node ./consumer/consumer.js***
 ###### → Terminal 2: ***node ./producer/producer.js***
 ###### → Terminal 3: ***npm start***
+###### → Endpoint: http://localhost:3000/api/v1/location/:device_id. Obs: O parametro :device_id, eu considerei o valor em decimal.
