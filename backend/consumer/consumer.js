@@ -1,5 +1,6 @@
 const Kafka = require('no-kafka');
 
+//consumidor recebendo o dado
 const consumer = new Kafka.SimpleConsumer({"connectionString":"127.0.0.1:9092"})
 let data = function (messageSet) {
     messageSet.forEach(function (m) {
@@ -9,13 +10,15 @@ let data = function (messageSet) {
 };
 
 return consumer.init().then(function () {
+    //mostra qual topico que o consumidor está inscrito e escutando os eventos
     return consumer.subscribe('users', data);
 });
 
+//função que traduz a mensagem recebida
 function parseMessage(message) {
     let splitMessage = message.split("");
     let match = ''; let header = '50F7'; let footer = '73C4';
-
+    //retirando header e footer pra deixar só os dados
     splitMessage.forEach(element => {
         match = match + element;
         if(match.includes(header)){
@@ -26,6 +29,7 @@ function parseMessage(message) {
             match = match[0];
         }
     });
+    //separando cada tipo de dado baseando-se nos bytes do protocolo
     let device = match.substring(0,6);
     let pingAck = match.substring(6,8);
     let dateStart = match.substring(8,16);
@@ -36,7 +40,7 @@ function parseMessage(message) {
     let speed = match.substring(40,42);
     let lat = match.substring(42,50);
     let long = match.substring(50,58);
-
+    //criando um objeto para setar todos os valores traduzidos
     let fullData = {
         table: []
     };
@@ -88,6 +92,7 @@ function parseMessage(message) {
     }
     fullData.table.push({dataComplete: data});
     
+    //salvando o objeto num arquivo json
     var pathDataJson = './consumer/data.json';
 
     var fs = require('fs');
@@ -99,11 +104,8 @@ function parseMessage(message) {
     fs.writeFileSync(pathDataJson, json, 'utf8', function(err) {
         if (err) throw err;
     });
-
-    
-    
 }
-
+//convertando os segundos recebidos do dado para EPOCH
 function convertEpoch(seg) {
     var myDate = new Date( seg *1000);
     return myDate.toLocaleString();
