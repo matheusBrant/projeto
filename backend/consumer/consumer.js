@@ -4,7 +4,6 @@ const consumer = new Kafka.SimpleConsumer({"connectionString":"127.0.0.1:9092"})
 let data = function (messageSet) {
     messageSet.forEach(function (m) {
         let value = m.message.value.toString('utf8');
-        console.log(value);
         parseMessage(value);
     });
 };
@@ -88,18 +87,21 @@ function parseMessage(message) {
         fullData.table.push({longitude: longitude});
     }
     fullData.table.push({dataComplete: data});
+    
+    var pathDataJson = './consumer/data.json';
 
     var fs = require('fs');
-    var filePath = 'data.json'; 
-    fs.unlinkSync(filePath);
-
+    fs.writeFileSync(pathDataJson, '', function(){
+    });
+       
     var json = JSON.stringify(fullData);
     var fs = require('fs');
-    fs.writeFile('data.json', json, 'utf8', function(err) {
+    fs.writeFileSync(pathDataJson, json, 'utf8', function(err) {
         if (err) throw err;
-        console.log('complete');
-        }
-    );
+    });
+
+    
+    
 }
 
 function convertEpoch(seg) {
