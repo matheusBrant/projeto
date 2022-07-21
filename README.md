@@ -15,7 +15,7 @@
 ###### → [Node](https://nodejs.org/en/download/)
 ## Rodando o projeto
 ###### → 1º: Docker Desktop precisa estar rodando se for no windows, e então: ***cd cp-docker-images/example/kafka-single-node*** → ***docker-compose up -d***
-###### → 2º: Criando o tópico Kafka chamado 'user': ***docker-compose exec broker kafka-topics --create --bootstrap-server \localhost:9092 --replication-factor 1 --partitions 1 --topic users*** 
+###### → 2º: Criando o tópico Kafka chamado 'users': ***docker-compose exec broker kafka-topics --create --bootstrap-server \localhost:9092 --replication-factor 1 --partitions 1 --topic users*** 
 ##### Pra rodar o projeto fui fazendo tudo por terminais bash, e utilizei 3 distintos na pasta 'projeto'
 ###### → Terminal 1: ***node ./consumer/consumer.js***
 ###### → Terminal 2: ***node ./producer/producer.js***
