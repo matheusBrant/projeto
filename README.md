@@ -3,7 +3,8 @@
 ###### → O Apache Kafka é um sistema de mensagens usado para criar aplicações com fluxo de dados contínuo. Por garantir robustez, escalabilidade, segurança, disponibilidade, extensibilidade por si próprio e por eu já ter tido contato prévio com a tecnologia, acreditei que faria sentido a utilização.
 ###### → Para facilitar a utilização do Kafka usei uma imagem Docker que facilitou a criação do tópico Kafka
 ###### → O fluxo Kafka pode ser trabalhado em diversas linguagens, mas utilizei NodeJs no produtor e no consumidor
-> ## Estrutura de pastas
+<!--
+## Estrutura de pastas
 ![image](https://user-images.githubusercontent.com/25610151/180105389-3285db19-4a83-4268-8293-c1f13306b7da.png)
 ###### → backend: pasta com os arquivos principais, rodando o kafka e criando o endpoint
 ###### →→ consumer/producer: para criar o fluxo de stream
@@ -21,3 +22,4 @@
 ###### → Terminal 2: ***node ./producer/producer.js***
 ###### → Terminal 3: ***npm start***
 ###### → Endpoint: http://localhost:3000/api/v1/location/:device_id. Obs: O parametro :device_id, eu considerei o valor em decimal.
+-->
