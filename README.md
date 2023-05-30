@@ -1,4 +1,3 @@
-# Instruções do projeto
 ## Stack: Kafka, Docker, Node
 ###### → O Apache Kafka é um sistema de mensagens usado para criar aplicações com fluxo de dados contínuo. Por garantir robustez, escalabilidade, segurança, disponibilidade, extensibilidade por si próprio e por eu já ter tido contato prévio com a tecnologia, acreditei que faria sentido a utilização.
 ###### → Para facilitar a utilização do Kafka usei uma imagem Docker que facilitou a criação do tópico Kafka
